@@ -2,45 +2,44 @@
 
 ## Objetivo
 
-Aprender a criar e utilizar **Route Handlers** no Next.js (App Router), trabalhando com os principais métodos HTTP: **GET**, **POST**, **PATCH** e **DELETE**.
+Aprender a criar e utilizar **Route Handlers** no Next.js (App Router), trabalhando com os principais métodos HTTP: **GET**, **POST**, **PATCH** e **DELETE**, utilizando o **Insomnia** para realizar e testar requisições.
 
 ---
 
 ## O que são Route Handlers?
 
-Os **Route Handlers** permitem criar endpoints de API personalizados dentro do Next.js utilizando as Web Request e Response APIs nativas. Eles são definidos dentro de arquivos `route.js` ou `route.ts` no diretório `app`.
+Os **Route Handlers** permitem criar endpoints de API personalizados dentro do Next.js utilizando as APIs nativas de **Request** e **Response**. Eles são definidos em arquivos `route.js` ou `route.ts` dentro do diretório `app`.
 
 Eles podem ser utilizados para:
-- **Buscar informações** (consultas e listagens);
+
+- **Buscar informações**;
 - **Enviar dados** e criar novos recursos;
-- **Atualizar dados** existentes (total ou parcialmente);
-- **Remover recursos** do banco de dados ou serviço;
-- **Processar requisições** e integrar com APIs externas.
+- **Atualizar dados** existentes;
+- **Remover recursos**;
+- **Processar requisições**;
+- **Integrar com APIs externas**.
 
 ---
 
-## Estrutura dos Métodos HTTP
+## Insomnia
 
-### 1. Método GET
-O método **GET** é utilizado para buscar ou consultar dados do servidor. Ele não deve alterar o estado do sistema.
+O **Insomnia** é uma ferramenta utilizada para testar e enviar requisições HTTP para APIs.
 
-```typescript
-import { NextResponse } from "next/server";
+Durante a aula, ele será utilizado para testar os métodos **GET, POST, PATCH e DELETE**, permitindo visualizar as requisições e as respostas da API.
 
-export async function GET() {
-  return NextResponse.json({
-    mensagem: "Lista de usuários recuperada com sucesso!",
-    usuarios: [
-      { id: 1, nome: "João" },
-      { id: 2, nome: "Maria" }
-    ]
-  });
-}
-## Método GET
+### Minha preferência pelo Insomnia
 
-O método **GET** é utilizado para buscar ou consultar dados.
+Eu prefiro utilizar o **Insomnia** para testar APIs porque considero a ferramenta mais prática e organizada para realizar requisições HTTP. Ele facilita o envio de dados, a visualização das respostas e os testes dos diferentes métodos.
 
-### Exemplo
+---
+
+# Métodos HTTP no Insomnia
+
+## 1. Método GET
+
+O método **GET** é utilizado para **buscar ou consultar dados** do servidor. Ele não deve alterar os dados existentes.
+
+### Exemplo no Route Handler
 
 ```typescript
 import { NextResponse } from "next/server";
@@ -54,62 +53,39 @@ export async function GET() {
     ]
   });
 }
-```
 
----
+## 2. Métodos POST
 
-## Método POST
+O método **POST** é utilizado para **enviar dados ao servidor e criar um novo recurso**.
 
-O método **POST** é utilizado para enviar dados e criar novos recursos no servidor.
+No **Insomnia**, selecionamos o método **POST**, informamos a URL da API e, em **Body → JSON**, adicionamos os dados que serão enviados.
 
 ### Exemplo
 
-```typescript
-import { NextResponse } from "next/server";
-
-export async function POST(request: Request) {
-  const body = await request.json();
-  const { nome, email } = body;
-
-  return NextResponse.json(
-    {
-      mensagem: "Usuário criado com sucesso!",
-      usuario: { id: Date.now(), nome, email }
-    },
-    { status: 201 }
-  );
+```json
+{
+  "nome": "João",
+  "email": "joao@email.com"
 }
-```
 
----
+## 3. Métodos PATCH
 
-## Método PATCH
+O método **PATCH** é utilizado para **atualizar parcialmente um recurso existente**. Ele permite modificar apenas as informações necessárias, sem precisar alterar todos os dados.
 
-O método **PATCH** é utilizado para atualizar parcialmente os dados de um recurso já existente.
+No **Insomnia**, selecionamos o método **PATCH**, informamos a URL da API e, em **Body → JSON**, adicionamos os dados que queremos atualizar.
 
 ### Exemplo
 
-```typescript
-import { NextResponse } from "next/server";
-
-export async function PATCH(request: Request) {
-  const body = await request.json();
-  const { id, nome } = body;
-
-  return NextResponse.json({
-    mensagem: `Usuário com ID ${id} atualizado com sucesso!`,
-    dadosAtualizados: { nome }
-  });
+```json
+{
+  "id": 1,
+  "nome": "João Silva"
 }
-```
+## 4. Método DELETE
 
----
+O método **DELETE** é utilizado para **remover um recurso existente** do servidor.
 
-## Método DELETE
-
-O método **DELETE** é utilizado para remover/deletar um recurso do servidor.
-
-### Exemplo
+### Exemplo no Route Handler
 
 ```typescript
 import { NextResponse } from "next/server";
@@ -122,4 +98,3 @@ export async function DELETE(request: Request) {
     mensagem: `Usuário com ID ${id} removido com sucesso!`
   });
 }
-```
