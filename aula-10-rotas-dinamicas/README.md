@@ -24,9 +24,10 @@ buscarPorId(@Param('id', ParseIntPipe) id:string) {
 }
 O controller recebe o ID, transforma o valor em número e encaminha a busca para o método encontrarPorId() do LivrosService.
 
-#⚙️ LivrosService
+# ⚙️ LivrosService
 O LivrosService possui uma lista de livros armazenada em memória:
-private livros = [
+
+### private livros = [
     {id: 1, titulo: 'O Senhor dos Anéis', autor: 'J.R.R Tolkien'},
     {id: 2, titulo: '1984', autor: 'George Orwell'},
     {id: 3, titulo: 'Dom Casmurro', autor: 'Machado de Assis'},
@@ -34,7 +35,11 @@ private livros = [
     {id: 5, titulo: 'Memórias do Subsolo', autor: 'Fiódor Dostoiévski'},
 ];
 A busca é realizada pelo ID:
-encontrarPorId(id: number) {
+
+
+encontrarPorId(id: number){
+
+
     const livro = this.livros.find((livro) => livro.id === id);
 
     if(!livro) {
@@ -49,7 +54,7 @@ Caso o livro seja encontrado, seus dados são retornados.
 
 Caso o ID não exista no acervo, a aplicação retorna uma exceção NotFoundException, resultando em um erro HTTP 404 Not Found.
 
-#📝 Conclusão
+# 📝 Conclusão
 Os testes realizados no Insomnia permitem verificar o comportamento do endpoint de busca de livros.
 
 Foram testados:
