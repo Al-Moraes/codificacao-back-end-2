@@ -18,7 +18,7 @@ O parâmetro id é recebido pela URL e validado utilizando o ParseIntPipe.
 
 Código utilizado
 @Get(':id')
-buscarPorId(@Param('id', ParseIntPipe) id:string) {
+### buscarPorId(@Param('id', ParseIntPipe) id:string) {
     const numeroId = +id
     return this.livroService.encontrarPorId(numeroId);
 }
