@@ -2,14 +2,13 @@ import { Module } from '@nestjs/common';
 import { createObserveModule } from '@nestjs/observe';
 import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
-import { LivrosService } from './livros.service.js';
-import { LivrosController } from './livros.controller.js';
+import { MidiaController } from './midia.controller.js';
 
 export const { ObserveModule, ObserveInstrument } = createObserveModule();
 
 @Module({
   imports: [],
-  controllers: [AppController, LivrosController],
-  providers: [AppService, LivrosService],
+  controllers: [AppController, MidiaController],
+  providers: [AppService],
 })
 export class AppModule {}
