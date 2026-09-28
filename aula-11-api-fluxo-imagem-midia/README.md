@@ -1,118 +1,360 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🖼️ Testes de Upload de Imagens com Insomnia
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+> Documentação dos testes realizados utilizando o **Insomnia** para validar o envio de imagens através do método **HTTP POST**.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 📌 Sobre
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Este documento apresenta como realizar testes de **upload de imagens** utilizando o Insomnia.
 
-## Project setup
+O objetivo é validar uma API responsável por receber uma imagem enviada pelo cliente através de uma requisição `POST`.
 
-```bash
-$ npm install
-```
+**Método utilizado:**
 
-## Compile and run the project
+`POST`
 
-```bash
-# development
-$ npm run start
+**Endpoint:**
 
-# watch mode
-$ npm run start:dev
+`/images`
 
-# production mode
-$ npm run start:prod
-```
+**Tipo de conteúdo:**
 
-## Run tests
+`multipart/form-data`
 
-```bash
-# unit tests
-$ npm run test
+---
 
-# e2e tests
-$ npm run test:e2e
+## 🛠️ Ferramentas utilizadas
 
-# test coverage
-$ npm run test:cov
-```
+- 🧪 **Insomnia** — Ferramenta utilizada para realizar os testes da API.
+- 🌐 **HTTP** — Protocolo utilizado na comunicação com a API.
+- 📤 **POST** — Método HTTP utilizado para enviar a imagem.
+- 🖼️ **Multipart Form Data** — Formato utilizado para realizar o upload do arquivo.
+- 💻 **API Backend** — Responsável por receber, validar e armazenar a imagem.
 
-## Deployment
+---
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+## 🚀 Testando o método POST
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### 1. Criando uma nova requisição
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+No **Insomnia**, crie uma nova requisição utilizando o método:
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+`POST`
 
-## Observability
+Informe a URL da API:
 
-In production applications, observability is essential for understanding how your system behaves, detecting issues early, and maintaining reliable performance.
+`http://localhost:3000/images`
 
-[NestJS Observe](https://observe.nestjs.com) automatically instruments your NestJS application, giving you deep visibility into your system with minimal setup:
+A configuração deverá ficar:
 
-- **Distributed tracing:** Follow requests across services and understand how they flow through your system.
-- **Waterfall analysis:** Visualize request execution and identify slow operations, bottlenecks, and unexpected delays.
-- **Performance analysis:** Analyze application performance in real time and quickly pinpoint areas that need optimization.
-- **Metrics:** Track key application and infrastructure metrics to understand system health and performance trends.
-- **Logging:** Centralize and correlate logs with traces and other telemetry to make debugging easier.
-- **Error tracking:** Detect errors quickly and investigate their root causes with the surrounding context.
-- **SLA monitoring:** Track service-level objectives and identify when your application is approaching or exceeding defined thresholds.
-- **Alarms and alerts:** Set up alerts for critical errors, performance degradation, SLA violations, and other anomalies so your team can react quickly.
+| Configuração | Valor |
+|---|---|
+| Método | `POST` |
+| URL | `http://localhost:3000/images` |
+| Body | `Multipart Form` |
 
-This project is already instrumented. Create a free account at [observe.nestjs.com](https://observe.nestjs.com), add an application, and paste the generated app key and secret into the `ObserveModule.forRoot()` call in `src/app.module.ts`.
+---
 
-The free plan needs no payment details and covers 300,000 events a month. You can also browse the [live demo](https://www.observe-demo.nestjs.com/dashboard) first - the whole dashboard over a busy service's data, with nothing to install.
+### 2. Configurando o Body
 
-## Resources
+Na aba **Body** do Insomnia, selecione:
 
-Check out a few resources that may come in handy when working with NestJS:
+`Multipart Form`
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Auto-instrument your application with [NestJS Observe](https://observe.nestjs.com). Distributed tracing, metrics, and logging made easy. Error tracking and performance monitoring for your NestJS applications.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+Depois, adicione um campo chamado:
 
-## Support
+`image`
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Configure o campo como:
 
-## Stay in touch
+| Campo | Tipo | Valor |
+|---|---|---|
+| `image` | `File` | `minha-imagem.png` |
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+A estrutura ficará semelhante a:
 
-## License
+`Body → Multipart Form → image → minha-imagem.png`
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+> 💡 **Importante:** o nome do campo `image` deve ser exatamente igual ao nome esperado pela API.
+
+---
+
+## 📤 Enviando a imagem
+
+Após selecionar a imagem, clique no botão **Send** no Insomnia.
+
+A requisição será enviada para:
+
+`POST http://localhost:3000/images`
+
+Utilizando:
+
+`multipart/form-data`
+
+O Insomnia será responsável por gerar automaticamente as informações necessárias para o envio do arquivo.
+
+---
+
+## 📥 Resposta esperada
+
+Caso o upload seja realizado com sucesso, a API poderá retornar uma resposta semelhante a:
+
+`201 Created`
+
+E um JSON contendo as informações da imagem:
+
+`{
+  "success": true,
+  "message": "Imagem enviada com sucesso!",
+  "image": {
+    "id": 1,
+    "filename": "minha-imagem.png",
+    "url": "/uploads/minha-imagem.png"
+  }
+}`
+
+---
+
+## 🧪 Cenários de teste
+
+| Nº | Cenário | Resultado esperado |
+|---|---|---|
+| 01 | Enviar imagem `.jpg` | ✅ Upload realizado |
+| 02 | Enviar imagem `.jpeg` | ✅ Upload realizado |
+| 03 | Enviar imagem `.png` | ✅ Upload realizado |
+| 04 | Enviar imagem `.webp` | ✅ Upload realizado |
+| 05 | Não enviar imagem | ❌ Erro `400 Bad Request` |
+| 06 | Enviar arquivo inválido | ❌ Erro `415 Unsupported Media Type` |
+| 07 | Enviar arquivo muito grande | ❌ Erro `413 Payload Too Large` |
+| 08 | Enviar campo incorreto | ❌ Erro de validação |
+| 09 | Enviar imagem com autenticação | ✅ Upload realizado |
+
+---
+
+## ❌ Testando erros
+
+### 🚫 Imagem não enviada
+
+Caso nenhuma imagem seja selecionada no Insomnia, a API deverá informar que o arquivo é obrigatório.
+
+**Resposta esperada:**
+
+`400 Bad Request`
+
+**Mensagem:**
+
+`Imagem não enviada.`
+
+---
+
+### 🚫 Formato inválido
+
+Caso seja enviado um arquivo que não seja uma imagem, a API deverá rejeitar o arquivo.
+
+**Exemplo:**
+
+`arquivo.pdf`
+
+**Resposta esperada:**
+
+`415 Unsupported Media Type`
+
+**Mensagem:**
+
+`Formato de imagem não permitido.`
+
+---
+
+### 🚫 Arquivo muito grande
+
+Caso o tamanho da imagem ultrapasse o limite definido pela API, o upload deverá ser rejeitado.
+
+**Resposta esperada:**
+
+`413 Payload Too Large`
+
+**Mensagem:**
+
+`O arquivo excede o tamanho máximo permitido.`
+
+---
+
+## 🔐 Teste com autenticação
+
+Caso a API utilize autenticação, será necessário informar o token no Header da requisição.
+
+**Header:**
+
+`Authorization: Bearer SEU_TOKEN`
+
+A requisição ficará:
+
+`POST http://localhost:3000/images`
+
+Com o Header:
+
+`Authorization: Bearer SEU_TOKEN`
+
+E o Body configurado como:
+
+`Multipart Form`
+
+Com o campo:
+
+`image = minha-imagem.png`
+
+---
+
+## 🌐 Endpoint utilizado
+
+**Método:**
+
+`POST`
+
+**Endpoint:**
+
+`/images`
+
+**URL completa:**
+
+`http://localhost:3000/images`
+
+---
+
+## 📋 Parâmetros
+
+| Parâmetro | Tipo | Obrigatório | Descrição |
+|---|---|---|---|
+| `image` | File | ✅ Sim | Arquivo de imagem enviado para a API |
+
+---
+
+## 🖼️ Formatos permitidos
+
+A API poderá aceitar os seguintes formatos:
+
+- `.jpg`
+- `.jpeg`
+- `.png`
+- `.webp`
+
+---
+
+## 📦 Tamanho máximo
+
+O tamanho máximo permitido para o arquivo pode ser definido pela API.
+
+**Exemplo:**
+
+`5 MB`
+
+---
+
+## 🔄 Fluxo do upload
+
+`Insomnia`
+
+↓
+
+`POST /images`
+
+↓
+
+`Multipart Form Data`
+
+↓
+
+`API`
+
+↓
+
+`Validação da imagem`
+
+↓
+
+`Upload`
+
+↓
+
+`Imagem armazenada`
+
+---
+
+## 📁 Estrutura do projeto
+
+`projeto/`
+
+`├── src/`
+
+`│   ├── controllers/`
+
+`│   ├── routes/`
+
+`│   ├── services/`
+
+`│   └── middlewares/`
+
+`│`
+
+`├── uploads/`
+
+`│`
+
+`├── package.json`
+
+`└── README.md`
+
+---
+
+## ✅ Checklist dos testes
+
+- [x] Criar requisição `POST`
+- [x] Configurar a URL da API
+- [x] Selecionar `Multipart Form`
+- [x] Adicionar o campo `image`
+- [x] Selecionar uma imagem
+- [x] Enviar a requisição
+- [x] Validar o status HTTP
+- [x] Validar a resposta da API
+- [x] Testar imagem `.jpg`
+- [x] Testar imagem `.jpeg`
+- [x] Testar imagem `.png`
+- [x] Testar imagem `.webp`
+- [x] Testar arquivo inválido
+- [x] Testar arquivo muito grande
+- [x] Testar requisição sem imagem
+- [x] Testar autenticação
+
+---
+
+## 🎯 Resultado
+
+Os testes realizados utilizando o **Insomnia** permitem verificar se a API está preparada para receber imagens através do método `POST`.
+
+O processo consiste em:
+
+1. Criar uma requisição `POST`.
+2. Informar o endpoint da API.
+3. Selecionar `Multipart Form`.
+4. Adicionar o campo `image`.
+5. Selecionar o arquivo de imagem.
+6. Enviar a requisição.
+7. Verificar o status da resposta.
+8. Validar os dados retornados pela API.
+
+---
+
+## 💡 Observação
+
+Os endpoints, nomes dos campos, formatos permitidos, tamanho máximo dos arquivos e estrutura das respostas devem ser adaptados de acordo com a implementação da API.
+
+---
+
+<div align="center">
+
+# 🖼️ Upload de Imagens
+
+**🧪 Testes com Insomnia • 📤 Método POST • 🚀 API REST**
+
+</div>
