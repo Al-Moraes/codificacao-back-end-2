@@ -13,7 +13,15 @@ export class AppController {
   @Get('admin')
   getAdmin() {
     return {
-      message: 'Bem-vindo ao Painel Administrativo!',
+      mensagem: 'Bem-vindo ao Painel Administrativo!',
+      data: new Date(),
+    }
+  }
+
+  @Get('secret')
+  getSecret(){
+    return {
+      mensagem: 'Bem-vindo a rota secreta!',
       data: new Date(),
     }
   }
