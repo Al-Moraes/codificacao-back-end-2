@@ -1,0 +1,11 @@
+{
+    "autor": "Dado Dolabela",
+    "texto": "É um jogo de palavras né... 'Dado pra você'",
+    "data": "11/09/2001",
+    "curtidas": [
+        {"curtidor": "José Maria", "numeroCurtida": 1}
+    ],
+    "comentarios": [
+        {"comentador": "José Maria", "comentario": "SOME DAQUI MEO"}
+    ]
+}
