@@ -32,22 +32,22 @@ export class AlunosController {
     }
 
 
-    @Get()
-    @ApiOperation({
-        summary: 'Retorna a lista de alunos cadastrados.',
-    })
-    @ApiResponse({
-        status: 200,
-        description: 'Lista de alunos retornada com sucesso.',
-    })
-    @ApiResponse({
-        status:404,
-        description: 'Nenhum aluno encontrado.',
-    })
-    @ApiResponse({
-        status:500,
-        description: 'Erro interno do servidor ou servidor indisponível.',
-    })
+   // @Get()
+   // @ApiOperation({
+     //   summary: 'Retorna a lista de alunos cadastrados.',
+   // })
+   // @ApiResponse({
+      //  status: 200,
+      //  description: 'Lista de alunos retornada com sucesso.',
+   // })
+   // @ApiResponse({
+   //     status:404,
+    //    description: 'Nenhum aluno encontrado.',
+   // })
+   // @ApiResponse({
+    //    status:500,
+      //  description: 'Erro interno do servidor ou servidor indisponível.',
+   // })
    // findAll() {
      //   return this.alunoService.findAll();
    // }
@@ -55,15 +55,15 @@ export class AlunosController {
 
     @Get()
     @ApiOperation({
-        summary: 'Retorna a lista de alunos cadastrados com paginação,',
+        summary: 'Retorna a lista de alunos cadastrados com paginação e filtros opcionais.',
     })
     @ApiResponse({
         status:200,
-        description: 'Lista de alunos retornada com sucesso,',
+        description: 'Lista de alunos retornada com sucesso.',
     })
     @ApiResponse({
         status:404,
-        description: 'Nenhum aluno encontrado,',
+        description: 'Nenhum aluno encontrado.',
     })
     @ApiResponse({
         status:500,
@@ -81,9 +81,27 @@ export class AlunosController {
         type: Number,
         description: 'Itens por página(padrão: 10'
     })
+
+    @ApiQuery({
+        name: 'nome',
+        required: false,
+        type: String,
+        description: 'Filtra alunos pelo nome',
+    })
+
+    @ApiQuery({
+        name: 'curso',
+        required: false,
+        type: String,
+        description: 'Filtra alunos pelo curso',
+    })
+
     findAllPage(@Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
-@Query('limit', new DefaultValuePipe(10), ParseIntPipe)limit:number){
-    return this.alunoService.findAllPage(page, limit);
+                @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit:number,
+                @Query('nome') nome?: string,
+                @Query('curso') curso?: string,           
+    ){  
+        return this.alunoService.findAllPage(page, limit, nome, curso);
 }
 
 
